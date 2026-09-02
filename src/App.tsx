@@ -33,37 +33,6 @@ export default function App() {
 
   return (
     <div className={cn("min-h-screen bg-[var(--lego-bg)] text-[var(--lego-text)] overflow-hidden relative transition-colors duration-300", isDark ? "dark" : "")}>
-      {/* Top-right corner controls: History, Settings, then the theme toggle */}
-      <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
-        <button
-          onClick={() => setMode('history')}
-          aria-label="History"
-          className={cn(
-            "p-3 border-4 shadow-[4px_4px_0px_var(--lego-border)] rounded-xl hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_var(--lego-border)] active:translate-y-1 active:shadow-none transition-all",
-            mode === 'history' ? "bg-[#B29500] border-[#7A6600] text-white" : "bg-[var(--lego-card)] border-[var(--lego-border)] text-[var(--lego-text)]"
-          )}
-        >
-          <History className="w-6 h-6" strokeWidth={2.5} />
-        </button>
-        <button
-          onClick={() => setMode('settings')}
-          aria-label="Settings"
-          className={cn(
-            "p-3 border-4 shadow-[4px_4px_0px_var(--lego-border)] rounded-xl hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_var(--lego-border)] active:translate-y-1 active:shadow-none transition-all",
-            mode === 'settings' ? "bg-[#D01012] border-[#8C0000] text-white" : "bg-[var(--lego-card)] border-[var(--lego-border)] text-[var(--lego-text)]"
-          )}
-        >
-          <SlidersHorizontal className="w-6 h-6" strokeWidth={2.5} />
-        </button>
-        <button
-          onClick={() => setIsDark(!isDark)}
-          aria-label="Toggle dark mode"
-          className="p-3 bg-[var(--lego-card)] border-4 border-[var(--lego-border)] shadow-[4px_4px_0px_var(--lego-border)] rounded-xl hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_var(--lego-border)] active:translate-y-1 active:shadow-none transition-all text-[var(--lego-text)]"
-        >
-          {isDark ? <Sun className="w-6 h-6" strokeWidth={2.5}/> : <Moon className="w-6 h-6" strokeWidth={2.5}/>}
-        </button>
-      </div>
-
       {/* Playful Lego Baseplate Background Mesh */}
       <div className="fixed inset-0 z-0 pointer-events-none transition-colors duration-300">
         <div
@@ -80,10 +49,43 @@ export default function App() {
 
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header */}
-        <header className="w-full p-6 flex flex-col items-center">
-          <div className="bg-[#FFD500] px-6 py-2 rounded-xl border-4 border-[var(--lego-border)] shadow-[4px_4px_0px_var(--lego-border)] mb-4 rotate-[-2deg] flex items-center gap-2 transition-colors duration-300">
-            <ScanLine className="w-6 h-6 text-[#2B2B2B]" strokeWidth={3} />
-            <h1 className="text-3xl md:text-4xl font-black tracking-tight text-[#2B2B2B] uppercase">
+        <header className="w-full p-4 sm:p-6 flex flex-col items-center">
+          {/* Utility row: History, Settings, theme toggle — its own row in normal
+              flow (not absolutely positioned) so it can never overlap the logo
+              below it, at any viewport width. */}
+          <div className="w-full flex justify-end items-center gap-2 mb-2">
+            <button
+              onClick={() => setMode('history')}
+              aria-label="History"
+              className={cn(
+                "p-2.5 sm:p-3 border-4 shadow-[4px_4px_0px_var(--lego-border)] rounded-xl hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_var(--lego-border)] active:translate-y-1 active:shadow-none transition-all",
+                mode === 'history' ? "bg-[#B29500] border-[#7A6600] text-white" : "bg-[var(--lego-card)] border-[var(--lego-border)] text-[var(--lego-text)]"
+              )}
+            >
+              <History className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+            </button>
+            <button
+              onClick={() => setMode('settings')}
+              aria-label="Settings"
+              className={cn(
+                "p-2.5 sm:p-3 border-4 shadow-[4px_4px_0px_var(--lego-border)] rounded-xl hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_var(--lego-border)] active:translate-y-1 active:shadow-none transition-all",
+                mode === 'settings' ? "bg-[#D01012] border-[#8C0000] text-white" : "bg-[var(--lego-card)] border-[var(--lego-border)] text-[var(--lego-text)]"
+              )}
+            >
+              <SlidersHorizontal className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+            </button>
+            <button
+              onClick={() => setIsDark(!isDark)}
+              aria-label="Toggle dark mode"
+              className="p-2.5 sm:p-3 bg-[var(--lego-card)] border-4 border-[var(--lego-border)] shadow-[4px_4px_0px_var(--lego-border)] rounded-xl hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_var(--lego-border)] active:translate-y-1 active:shadow-none transition-all text-[var(--lego-text)]"
+            >
+              {isDark ? <Sun className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5}/> : <Moon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5}/>}
+            </button>
+          </div>
+
+          <div className="bg-[#FFD500] px-6 py-2 rounded-xl border-4 border-[var(--lego-border)] shadow-[4px_4px_0px_var(--lego-border)] mb-4 rotate-[-2deg] flex items-center gap-2 transition-colors duration-300 max-w-full">
+            <ScanLine className="w-6 h-6 text-[#2B2B2B] shrink-0" strokeWidth={3} />
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#2B2B2B] uppercase truncate">
               QRMesh
             </h1>
           </div>
