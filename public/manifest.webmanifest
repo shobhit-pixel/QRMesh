@@ -1,0 +1,14 @@
+{
+  "name": "QRMesh — Universal Offline Transfer",
+  "short_name": "QRMesh",
+  "description": "Send actions and data device-to-device using only QR codes. No internet, no accounts, no servers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F5F0",
+  "theme_color": "#0057A6",
+  "orientation": "any",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

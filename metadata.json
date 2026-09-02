@@ -1,0 +1,5 @@
+{
+  "name": "QRMesh",
+  "description": "Universal offline QR action & data transfer platform. No servers, no accounts.",
+  "requestFramePermissions": ["camera"]
+}
