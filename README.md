@@ -4,6 +4,13 @@
 
 QRMesh is a privacy-first, offline QR platform that turns QR codes into **actions, contacts, payments, links, and file transfers**.
 
+### 🔥 Experience QRMesh
+
+**Turn data into action — instantly.**
+
+👉 **[Launch the Live App →](https://qrmesh-sepia.vercel.app/)**
+
+
 ```text
               What are you sending?
                        │
